@@ -2,7 +2,7 @@
   "name": "developer-automation-agent-visualizer",
   "private": false,
   "version": "1.0.0",
-  "description": "Self-configuring dashboard for visualizing developer automations, AI agents, MCP servers, and Claude ecosystem tools",
+  "description": "Agent Command Center — self-configuring dashboard for visualizing developer automations, AI agents, MCP servers, and Claude ecosystem tools",
   "type": "module",
   "scripts": {
     "dev": "vite",

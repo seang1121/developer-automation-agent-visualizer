@@ -1,4 +1,4 @@
-# DAAV — Developer, Automation & Agent Visualizer
+# Agent Command Center (ACC)
 
 A self-configuring dashboard that auto-discovers your developer tools, AI agents, MCP servers, cron jobs, and Claude ecosystem plugins — then visualizes everything in one place.
 
@@ -15,7 +15,7 @@ Opens at [http://localhost:3100](http://localhost:3100) with sample "Acme Labs" 
 
 ## Auto-Discovery
 
-DAAV isn't a template you manually fill in. It scans your system automatically.
+ACC isn't a template you manually fill in. It scans your system automatically.
 
 ### With Claude Code
 

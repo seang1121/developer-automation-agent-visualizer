@@ -17,7 +17,7 @@ export interface ProjectConfig {
   schedulerCategories?: { key: string; title: string }[]
 }
 
-export interface DaavConfig {
+export interface AccConfig {
   title: string
   projectTabs: ProjectTabConfig[]
   projects?: ProjectConfig[]

@@ -1,4 +1,4 @@
-# DAAV — Developer, Automation & Agent Visualizer
+# Agent Command Center (ACC)
 
 Self-configuring dashboard for visualizing developer automations, AI agents, MCP servers, and Claude ecosystem tools.
 

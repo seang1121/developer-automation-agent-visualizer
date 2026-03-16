@@ -26,7 +26,7 @@ export function Sidebar({ items, activeTab, onTabChange }: SidebarProps) {
       <div className="flex h-14 items-center justify-between border-b border-gray-800 px-4">
         {!collapsed && (
           <span className="text-sm font-bold text-white tracking-tight truncate">
-            DAAV
+            ACC
           </span>
         )}
         <button
@@ -60,7 +60,7 @@ export function Sidebar({ items, activeTab, onTabChange }: SidebarProps) {
 
       <div className="border-t border-gray-800 px-4 py-3">
         {!collapsed && (
-          <span className="text-xs text-gray-600 font-mono">DAAV v1.0</span>
+          <span className="text-xs text-gray-600 font-mono">ACC v1.0</span>
         )}
       </div>
     </aside>

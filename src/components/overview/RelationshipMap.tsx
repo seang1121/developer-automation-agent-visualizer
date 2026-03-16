@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import type { Relationship } from '../../types/dashboard'
 import type { DashboardData } from '../../types/agents'
 import { forceLayout } from '../../layout/forceLayout'
@@ -21,8 +21,26 @@ const defaultNodeColors = [
   '#ec4899', '#14b8a6', '#6366f1', '#f97316', '#64748b',
 ]
 
+function curvedPath(x1: number, y1: number, x2: number, y2: number, cx: number, cy: number): string {
+  const dx = x2 - x1
+  const dy = y2 - y1
+  // Curve away from center
+  const mx = (x1 + x2) / 2
+  const my = (y1 + y2) / 2
+  const nx = -(dy) * 0.15
+  const ny = (dx) * 0.15
+  // Push curve outward from center
+  const fromCenter = Math.atan2(my - cy, mx - cx)
+  const push = 20
+  const cpx = mx + nx + Math.cos(fromCenter) * push
+  const cpy = my + ny + Math.sin(fromCenter) * push
+  return `M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`
+}
+
 export function RelationshipMap({ relationships, data }: Props) {
   const config = loadConfig()
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null)
+  const [hoveredEdge, setHoveredEdge] = useState<number | null>(null)
 
   const nodes = useMemo(() => {
     const nodeSet = new Set<string>()
@@ -52,63 +70,117 @@ export function RelationshipMap({ relationships, data }: Props) {
   }, [relationships, data?.projects, config.centerNode])
 
   const nodeMap = new Map(nodes.map((n) => [n.id, n]))
+  const centerNode = nodes.find((n) => n.isCenter)
+  const cxCenter = centerNode?.x ?? 700
+  const cyCenter = centerNode?.y ?? 375
 
   return (
     <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 overflow-x-auto">
       <svg
-        viewBox="0 0 950 480"
-        className="w-full min-w-[600px]"
-        style={{ maxHeight: 420 }}
+        viewBox="0 0 1400 750"
+        className="w-full min-w-[900px]"
+        style={{ maxHeight: 650 }}
       >
+        {/* Edges */}
         {relationships.map((rel, i) => {
           const from = nodeMap.get(rel.from)
           const to = nodeMap.get(rel.to)
           if (!from || !to) return null
           const color = edgeTypeColors[rel.type] || '#6b7280'
+
+          const isHighlighted =
+            hoveredNode === rel.from || hoveredNode === rel.to || hoveredEdge === i
+          const dimmed = (hoveredNode || hoveredEdge !== null) && !isHighlighted
+
+          const d = curvedPath(from.x, from.y, to.x, to.y, cxCenter, cyCenter)
           const midX = (from.x + to.x) / 2
           const midY = (from.y + to.y) / 2
+
           return (
-            <g key={i}>
-              <line
-                x1={from.x}
-                y1={from.y}
-                x2={to.x}
-                y2={to.y}
-                stroke={color}
-                strokeWidth={1.5}
-                strokeOpacity={0.5}
+            <g key={`edge-${i}`}>
+              {/* Invisible fat hitbox for hover */}
+              <path
+                d={d}
+                fill="none"
+                stroke="transparent"
+                strokeWidth={14}
+                onMouseEnter={() => setHoveredEdge(i)}
+                onMouseLeave={() => setHoveredEdge(null)}
+                style={{ cursor: 'pointer' }}
               />
-              <text
-                x={midX}
-                y={midY - 6}
-                fill={color}
-                fontSize={9}
-                textAnchor="middle"
-                fontFamily="monospace"
-              >
-                {rel.label}
-              </text>
+              <path
+                d={d}
+                fill="none"
+                stroke={color}
+                strokeWidth={isHighlighted ? 2.5 : 1.2}
+                strokeOpacity={dimmed ? 0.1 : isHighlighted ? 0.9 : 0.35}
+                pointerEvents="none"
+              />
+              {/* Label only on hover */}
+              {isHighlighted && (
+                <g>
+                  <rect
+                    x={midX - 70}
+                    y={midY - 20}
+                    width={140}
+                    height={18}
+                    rx={4}
+                    fill="#1f2937"
+                    fillOpacity={0.95}
+                    stroke={color}
+                    strokeWidth={0.5}
+                  />
+                  <text
+                    x={midX}
+                    y={midY - 8}
+                    fill={color}
+                    fontSize={9}
+                    textAnchor="middle"
+                    fontFamily="monospace"
+                    fontWeight={600}
+                  >
+                    {rel.label}
+                  </text>
+                </g>
+              )}
             </g>
           )
         })}
 
+        {/* Nodes */}
         {nodes.map((node) => {
           const isCenter = node.isCenter
-          const w = isCenter ? 140 : 110
-          const h = isCenter ? 44 : 36
+          const w = isCenter ? 150 : 120
+          const h = isCenter ? 46 : 36
+
+          const isHighlighted =
+            hoveredNode === node.id ||
+            (hoveredNode &&
+              relationships.some(
+                (r) =>
+                  (r.from === hoveredNode && r.to === node.id) ||
+                  (r.to === hoveredNode && r.from === node.id)
+              ))
+          const dimmed = hoveredNode !== null && !isHighlighted && hoveredNode !== node.id
+
           return (
-            <g key={node.id}>
+            <g
+              key={node.id}
+              onMouseEnter={() => setHoveredNode(node.id)}
+              onMouseLeave={() => setHoveredNode(null)}
+              style={{ cursor: 'pointer' }}
+            >
               {isCenter && (
                 <rect
-                  x={node.x - w / 2 - 3}
-                  y={node.y - h / 2 - 3}
-                  width={w + 6}
-                  height={h + 6}
-                  rx={12}
+                  x={node.x - w / 2 - 4}
+                  y={node.y - h / 2 - 4}
+                  width={w + 8}
+                  height={h + 8}
+                  rx={14}
                   fill="none"
                   stroke={node.color}
                   strokeWidth={1}
-                  strokeOpacity={0.3}
+                  strokeOpacity={0.4}
                 />
               )}
               <rect
@@ -119,13 +191,15 @@ export function RelationshipMap({ relationships, data }: Props) {
                 rx={8}
                 fill="#111827"
                 stroke={node.color}
-                strokeWidth={isCenter ? 2.5 : 1.5}
+                strokeWidth={isCenter ? 2.5 : dimmed ? 0.8 : 1.5}
+                strokeOpacity={dimmed ? 0.3 : 1}
               />
               <text
                 x={node.x}
                 y={node.y + 4}
                 fill="white"
-                fontSize={isCenter ? 12 : 10}
+                fillOpacity={dimmed ? 0.3 : 1}
+                fontSize={isCenter ? 13 : 10}
                 textAnchor="middle"
                 fontFamily="sans-serif"
                 fontWeight={isCenter ? 700 : 600}
@@ -136,7 +210,8 @@ export function RelationshipMap({ relationships, data }: Props) {
           )
         })}
 
-        <g transform="translate(10, 460)">
+        {/* Legend */}
+        <g transform="translate(10, 720)">
           {Object.entries(edgeTypeColors).map(([type, color], i) => (
             <g key={type} transform={`translate(${i * 110}, 0)`}>
               <line x1={0} y1={6} x2={20} y2={6} stroke={color} strokeWidth={2} />
@@ -145,6 +220,9 @@ export function RelationshipMap({ relationships, data }: Props) {
               </text>
             </g>
           ))}
+          <text x={480} y={10} fill="#4b5563" fontSize={9} fontFamily="monospace">
+            Hover nodes or edges to see details
+          </text>
         </g>
       </svg>
     </div>
