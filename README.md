@@ -1,6 +1,6 @@
 # Agent Command Center (ACC)
 
-A self-configuring dashboard that auto-discovers your developer tools, AI agents, MCP servers, cron jobs, and Claude ecosystem plugins — then visualizes everything in one place.
+A self-configuring dashboard that auto-discovers your developer tools, AI agents, MCP servers, cron jobs, and developer ecosystem plugins — then visualizes everything in one place.
 
 ## Quick Start
 
@@ -17,17 +17,17 @@ Opens at [http://localhost:3100](http://localhost:3100) with sample "Acme Labs" 
 
 ACC isn't a template you manually fill in. It scans your system automatically.
 
-### With Claude Code
+### With the CLI
 
 ```
 /setup-daav
 ```
 
 This slash command scans your local system for:
-- Claude Code commands, agents, and skills
+- AI commands, agents, and skills
 - MCP servers and hooks from `~/.claude/settings.json`
 - Git repos in your home directory
-- Project metadata from `CLAUDE.md`, `package.json`, `pyproject.toml`
+- Project metadata from `package.json`, `pyproject.toml`
 - Cron jobs, schedulers, and automation scripts
 - Cross-project relationships
 
@@ -86,9 +86,9 @@ All discovered data is written to `src/data/*.json` and a `daav.config.json` is 
 | `cron-jobs.json` | Cron job registry |
 | `repos.json` | GitHub repositories |
 | `infrastructure.json` | MCP servers, hooks, scripts |
-| `marketplace-plugins.json` | Claude marketplace plugins |
+| `marketplace-plugins.json` | Marketplace plugins |
 | `projects.json` | Project metadata |
-| `claude-tools.json` | Claude CLI tools |
+| `claude-tools.json` | CLI tools |
 | `archived.json` | Historical project snapshots |
 | `relationships.json` | Project relationship graph edges |
 | `descriptions.json` | Section descriptions |
@@ -100,7 +100,7 @@ All discovered data is written to `src/data/*.json` and a `daav.config.json` is 
 - **Projects** — All projects by category
 - **GitHub Repos** — Git-tracked projects with remote URLs
 - **All Automations** — Agents, schedulers, cron jobs, scripts with filters
-- **Claude Ecosystem** — Commands, agents, skills, MCP servers, plugins, hooks
+- **Developer Ecosystem** — Commands, agents, skills, MCP servers, plugins, hooks
 
 ## Tech Stack
 
