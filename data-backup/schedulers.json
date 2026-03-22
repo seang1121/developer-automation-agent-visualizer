@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Nimrod Tweet Draft",
+    "schedule": "11:55 AM EST daily",
+    "cron": "55 11 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "content",
+    "description": "Triggers NimrodAgent to generate bet slip images and tweet drafts. Runs 5 min before noon to have content ready for midday posting."
+  },
+  {
+    "name": "Auto-Resolve (Evening)",
+    "schedule": "9:30 PM EST daily",
+    "cron": "30 21 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "resolution",
+    "description": "First resolve pass \u2014 marks picks as W/L for games that have finished. Catches most NBA/NCAAB games ending by 9:30 PM."
+  },
+  {
+    "name": "Auto-Resolve (Late Night)",
+    "schedule": "3:00 AM EST daily",
+    "cron": "0 3 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "resolution",
+    "description": "Second resolve pass \u2014 catches late West Coast games, overtime finishes, and any games missed by the evening pass."
+  },
+  {
+    "name": "Suggestions Refresh",
+    "schedule": "10 AM, 4 PM, 8 PM, 12 AM EST",
+    "cron": "0 10,16,20,0 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "refresh",
+    "description": "Runs full OrchestratorAgent pipeline 4x/day. Re-analyzes all upcoming games with latest injury, line, and stats data. Updates AI suggestions on the dashboard."
+  },
+  {
+    "name": "Auto-Scan",
+    "schedule": "3x/day",
+    "cron": "0 9,14,19 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "refresh",
+    "description": "Scans for new games on the schedule that haven't been analyzed yet. Adds them to the pipeline for the next Suggestions Refresh cycle."
+  },
+  {
+    "name": "AP Poll Tracker",
+    "schedule": "5:00 AM EST",
+    "cron": "0 5 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "refresh",
+    "description": "Pulls latest AP Top 25 rankings for NCAAB. Used by TrendsAgent for ranked vs unranked matchup analysis and upset detection."
+  },
+  {
+    "name": "News Feed Refresh",
+    "schedule": "Every 30 minutes",
+    "cron": "*/30 * * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "refresh",
+    "description": "Aggregates sports news from configured feeds. Surfaces trade rumors, coaching changes, and lineup news that may affect upcoming games."
+  },
+  {
+    "name": "DB Backup",
+    "schedule": "3:00 AM EST daily",
+    "cron": "0 3 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "maintenance",
+    "description": "Full SQLite database backup. Runs alongside the late-night resolve pass. Stored locally for disaster recovery."
+  },
+  {
+    "name": "Agent Monitor",
+    "schedule": "Continuous daemon",
+    "cron": "\u2014",
+    "triggerType": "daemon",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "maintenance",
+    "description": "Watches all agent processes for crashes, timeouts, and anomalous output. Logs health metrics to errors.log."
+  },
+  {
+    "name": "Daily Maintenance",
+    "schedule": "6:00 AM EST daily",
+    "cron": "0 6 * * *",
+    "triggerType": "cron",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "maintenance",
+    "description": "Complete daily maintenance cycle: auto-resolve all pending picks, run shadow learning on ALL games, update ML weights, clean up old data."
+  },
+  {
+    "name": "Shadow Learning",
+    "schedule": "After each resolve pass",
+    "cron": "post-resolve",
+    "triggerType": "manual",
+    "timezone": "US/Eastern",
+    "status": "active",
+    "project": "betting-analyzer",
+    "category": "maintenance",
+    "description": "Analyzes ALL games (not just picked ones), resolves shadow picks, and updates ML model weights. Runs as part of the resolve pipeline to keep the learning loop tight."
+  }
+]

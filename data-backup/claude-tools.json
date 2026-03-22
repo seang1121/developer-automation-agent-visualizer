@@ -1,0 +1,56 @@
+[
+  {
+    "name": "general-purpose",
+    "type": "agent",
+    "filePath": "built-in",
+    "description": "Default multi-step agent \u2014 handles complex tasks autonomously including code search, research, file editing, and multi-tool orchestration."
+  },
+  {
+    "name": "Explore",
+    "type": "agent",
+    "filePath": "built-in",
+    "description": "Fast codebase exploration agent \u2014 finds files by pattern, searches code for keywords, answers architecture questions. Supports quick/medium/thorough depth levels."
+  },
+  {
+    "name": "Plan",
+    "type": "agent",
+    "filePath": "built-in",
+    "description": "Software architect agent \u2014 designs implementation plans, identifies critical files, considers architectural trade-offs. Returns step-by-step strategies."
+  },
+  {
+    "name": "claude-code-guide",
+    "type": "agent",
+    "filePath": "built-in",
+    "description": "Documentation agent \u2014 answers questions about Claude Code features, hooks, slash commands, MCP servers, IDE integrations, Agent SDK, and Anthropic API."
+  },
+  {
+    "name": "scrapling-spider-builder",
+    "type": "agent",
+    "filePath": "~/.claude/agents/scrapling-spider-builder.md",
+    "description": "Custom agent for building, debugging, and optimizing Scrapling web scraping spiders with TLS fingerprinting bypass and CSS/XPath selectors."
+  },
+  {
+    "name": "fixer-github",
+    "type": "command",
+    "filePath": "~/.claude/commands/fixer-github.md",
+    "description": "Slash command for automated GitHub repository fixes \u2014 linting, formatting, and issue resolution across repos."
+  },
+  {
+    "name": "pr-inbox",
+    "type": "command",
+    "filePath": "~/.claude/commands/pr-inbox.md",
+    "description": "Slash command for managing pull request inbox \u2014 review, triage, and respond to open PRs."
+  },
+  {
+    "name": "scan-dashboard",
+    "type": "command",
+    "filePath": "~/.claude/commands/scan-dashboard.md",
+    "description": "Slash command that scans the system for Claude tools, git repos, archived repos, and infrastructure changes — diffs against dashboard data files and updates with confirmation."
+  },
+  {
+    "name": "update-dashboard",
+    "type": "command",
+    "filePath": "~/.claude/commands/update-dashboard.md",
+    "description": "Auto-sync Agent Command Center — runs drift scan, applies all updates to JSON data files, verifies build, commits and pushes to GitHub."
+  }
+]

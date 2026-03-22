@@ -340,6 +340,17 @@ def sync_plugins() -> list[str]:
         plugins.append(entry)
         changes.append(f"+ marketplace-plugins: added '{display_name}'")
 
+    # Remove plugins no longer on disk
+    to_remove = []
+    for i, p in enumerate(plugins):
+        pname = p["name"].lower().replace(" ", "-")
+        if pname not in disk_plugins and pname not in IGNORED_PLUGINS:
+            to_remove.append(i)
+            changes.append(f"- marketplace-plugins: removed '{p['name']}'")
+
+    for i in reversed(to_remove):
+        plugins.pop(i)
+
     if changes:
         save_json(json_path, plugins)
     return changes

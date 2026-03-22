@@ -1,0 +1,274 @@
+[
+  {
+    "name": "Agent SDK Dev",
+    "kind": "skill",
+    "installed": true,
+    "installs": 32056,
+    "description": "Claude Agent SDK development helpers — build custom agents with the Anthropic SDK"
+  },
+  {
+    "name": "Asana",
+    "kind": "mcp",
+    "transport": "sse",
+    "url": "https://mcp.asana.com/sse",
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 4256,
+    "description": "Project management — tasks, projects, workspaces, search, and team collaboration via Asana API"
+  },
+  {
+    "name": "Claude MD Management",
+    "kind": "skill",
+    "installed": true,
+    "installs": 51259,
+    "description": "Audit, maintain, and improve CLAUDE.md files — capture session learnings, keep project memory current"
+  },
+  {
+    "name": "Code Review",
+    "kind": "skill",
+    "installed": true,
+    "installs": 117748,
+    "description": "Automated code review using multiple specialized agents with confidence-based scoring"
+  },
+  {
+    "name": "Code Simplifier",
+    "kind": "skill",
+    "installed": true,
+    "installs": 96077,
+    "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving functionality"
+  },
+  {
+    "name": "Commit Commands",
+    "kind": "skill",
+    "installed": true,
+    "installs": 64480,
+    "description": "Streamlined git workflow — commit, push, and create PRs with simple slash commands"
+  },
+  {
+    "name": "Context7",
+    "kind": "mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": ["-y", "@context7/mcp"],
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 139992,
+    "description": "Up-to-date documentation and code examples pulled directly from library source repos"
+  },
+  {
+    "name": "Feature Dev",
+    "kind": "skill",
+    "installed": true,
+    "installs": 98821,
+    "description": "Full feature development workflow — codebase exploration, architecture design, implementation, and quality review"
+  },
+  {
+    "name": "Firebase",
+    "kind": "mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": ["-y", "firebase-tools@latest", "experimental:mcp"],
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 9621,
+    "description": "Firebase project management — Firestore, Auth, hosting, storage, and Cloud Functions"
+  },
+  {
+    "name": "Frontend Design",
+    "kind": "skill",
+    "installed": true,
+    "installs": 247733,
+    "description": "UI/UX design implementation skill — the #1 most installed Claude Code plugin"
+  },
+  {
+    "name": "GitHub",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://api.githubcopilot.com/mcp/",
+    "envVars": ["GITHUB_PERSONAL_ACCESS_TOKEN"],
+    "oauth": false,
+    "installed": true,
+    "installs": 102371,
+    "description": "GitHub repos, issues, PRs, actions, code search, and repository management"
+  },
+  {
+    "name": "GitLab",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://gitlab.com/-/mcp",
+    "envVars": [],
+    "oauth": true,
+    "installed": true,
+    "installs": 13372,
+    "description": "GitLab projects, merge requests, pipelines, issues, and CI/CD management"
+  },
+  {
+    "name": "Greptile",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://mcp.greptile.com/mcp",
+    "envVars": ["GREPTILE_API_KEY", "GITHUB_TOKEN"],
+    "oauth": false,
+    "installed": true,
+    "installs": 25258,
+    "description": "AI-powered codebase search and Q&A — understands entire repos semantically"
+  },
+  {
+    "name": "Laravel Boost",
+    "kind": "mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": ["-y", "@nicepkg/laravel-boost-mcp"],
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 10888,
+    "description": "Laravel development tools — Artisan commands, migrations, Eloquent, and Blade templates"
+  },
+  {
+    "name": "Linear",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://mcp.linear.app/sse",
+    "envVars": [],
+    "oauth": true,
+    "installed": true,
+    "installs": 18890,
+    "description": "Linear issue tracking — create/update issues, manage cycles, projects, and team workflows"
+  },
+  {
+    "name": "Notion",
+    "kind": "hybrid",
+    "transport": "http",
+    "url": "https://mcp.notion.com/mcp",
+    "envVars": [],
+    "oauth": true,
+    "installed": true,
+    "installs": 22551,
+    "description": "Notion MCP server + skills — pages, databases, search, and workspace management"
+  },
+  {
+    "name": "Playwright",
+    "kind": "mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-playwright"],
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 79591,
+    "description": "Browser automation — navigate pages, fill forms, click elements, take screenshots, run E2E tests"
+  },
+  {
+    "name": "PostHog",
+    "kind": "hybrid",
+    "transport": "http",
+    "url": "https://mcp.posthog.com/mcp",
+    "envVars": ["POSTHOG_MCP_URL"],
+    "oauth": false,
+    "installed": true,
+    "installs": 3483,
+    "description": "PostHog analytics, feature flags, experiments, error tracking, and insights"
+  },
+  {
+    "name": "PR Review Toolkit",
+    "kind": "skill",
+    "installed": true,
+    "installs": 44211,
+    "description": "PR review agents — comments, tests, error handling, type design, code quality, and simplification"
+  },
+  {
+    "name": "Pyright LSP",
+    "kind": "lsp",
+    "installed": true,
+    "installs": 39729,
+    "description": "Python language server — static type checking, go-to-definition, and code intelligence via Pyright"
+  },
+  {
+    "name": "Security Guidance",
+    "kind": "hook",
+    "installed": true,
+    "installs": 61288,
+    "description": "Security hook that warns about command injection, XSS, and unsafe patterns when editing files"
+  },
+  {
+    "name": "Sentry",
+    "kind": "hybrid",
+    "transport": "http",
+    "url": "https://mcp.sentry.dev/mcp",
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 15290,
+    "description": "Sentry error monitoring — debug issues, view stack traces, and manage alerts from Claude Code"
+  },
+  {
+    "name": "Serena",
+    "kind": "mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-serena"],
+    "envVars": [],
+    "oauth": false,
+    "installed": true,
+    "installs": 52649,
+    "description": "Code-aware agent — understands project structure, symbols, references, and cross-file dependencies"
+  },
+  {
+    "name": "Slack",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://slack-mcp.com/mcp",
+    "envVars": [],
+    "oauth": true,
+    "installed": true,
+    "installs": 17084,
+    "description": "Slack workspace — send/read messages, manage channels, search conversations, and handle threads"
+  },
+  {
+    "name": "Stripe",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://mcp.stripe.com",
+    "envVars": ["STRIPE_SECRET_KEY"],
+    "oauth": false,
+    "installed": true,
+    "installs": 13383,
+    "description": "Stripe payments — customers, subscriptions, invoices, payment intents, and product catalog"
+  },
+  {
+    "name": "Supabase",
+    "kind": "mcp",
+    "transport": "http",
+    "url": "https://mcp.supabase.com",
+    "envVars": ["SUPABASE_ACCESS_TOKEN"],
+    "oauth": false,
+    "installed": true,
+    "installs": 37363,
+    "description": "Supabase backend — Postgres queries, Auth, storage buckets, edge functions, and realtime subscriptions"
+  },
+  {
+    "name": "Superpowers",
+    "kind": "skill",
+    "installed": true,
+    "installs": 118874,
+    "description": "Core skills library — TDD, debugging, collaboration patterns, and proven development techniques"
+  },
+  {
+    "name": "TypeScript LSP",
+    "kind": "lsp",
+    "installed": true,
+    "installs": 77633,
+    "description": "TypeScript/JavaScript language server — go-to-definition, find references, error checking, and completions"
+  },
+  {
+    "name": "Vercel",
+    "kind": "skill",
+    "installed": true,
+    "installs": 19512,
+    "description": "Deploy to Vercel with deployment monitoring, log analysis, and error detection"
+  }
+]

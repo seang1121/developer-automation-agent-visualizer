@@ -1,0 +1,280 @@
+{
+  "mcpServers": [
+    {
+      "name": "Sports Betting AI",
+      "version": "1.0.0",
+      "transport": "stdio",
+      "command": "python3 sports_mcp_server.py",
+      "description": "Exposes betting-analyzer to Claude via MCP protocol — AI predictions, live odds lookup, bet analysis, and pick history.",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "Figma",
+      "version": "cloud",
+      "transport": "cloud",
+      "command": "claude.ai connector",
+      "description": "Official Figma MCP server — read designs, get screenshots, generate diagrams in FigJam, manage Code Connect mappings. Connected via Claude marketplace.",
+      "project": "system"
+    },
+    {
+      "name": "Gmail",
+      "version": "cloud",
+      "transport": "cloud",
+      "command": "claude.ai connector",
+      "description": "Gmail MCP server — search messages, read threads, create drafts, manage labels. Used by pr-inbox command for PR feedback triage.",
+      "project": "system"
+    },
+    {
+      "name": "Canva",
+      "version": "cloud",
+      "transport": "cloud",
+      "command": "claude.ai connector",
+      "description": "Canva MCP server — create designs, edit templates, export assets, manage brand kits. Connected via Claude marketplace.",
+      "project": "system"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "block-secrets",
+      "event": "PreToolUse",
+      "matcher": "Read|Edit|Write",
+      "command": "python3 ~/.claude/hooks/block-secrets.py",
+      "description": "Intercepts Read/Edit/Write tool calls and blocks access to .env, secrets.json, credentials, and SSH key files. Runs before every file operation.",
+      "project": "system"
+    },
+    {
+      "name": "verify-no-secrets",
+      "event": "Stop",
+      "command": "bash ~/.claude/hooks/verify-no-secrets.sh",
+      "description": "Exit gate — scans the full session output for leaked API keys, tokens, passwords, or credentials before Claude's response is finalized.",
+      "project": "system"
+    },
+    {
+      "name": "check-rulecatch",
+      "event": "Stop",
+      "command": "bash ~/.claude/hooks/check-rulecatch.sh",
+      "description": "Exit gate — validates Claude followed CLAUDE.md project rules (no hardcoded secrets, no .env commits, no unauthorized deploys) before session ends.",
+      "project": "system"
+    },
+    {
+      "name": "check-branch",
+      "event": "PreToolUse",
+      "command": "bash ~/.claude/hooks/check-branch.sh",
+      "description": "Verifies the current git branch before allowing tool operations. Prevents accidental changes to protected branches.",
+      "project": "system"
+    },
+    {
+      "name": "check-e2e",
+      "event": "Stop",
+      "command": "bash ~/.claude/hooks/check-e2e.sh",
+      "description": "Exit gate — runs end-to-end validation checks before session finalization.",
+      "project": "system"
+    },
+    {
+      "name": "check-env-sync",
+      "event": "PreToolUse",
+      "command": "bash ~/.claude/hooks/check-env-sync.sh",
+      "description": "Validates .env and .env.example stay in sync — ensures no new env vars are added without updating the example template.",
+      "project": "system"
+    },
+    {
+      "name": "check-ports",
+      "event": "PreToolUse",
+      "command": "bash ~/.claude/hooks/check-ports.sh",
+      "description": "Checks for port conflicts before starting dev servers or services.",
+      "project": "system"
+    },
+    {
+      "name": "check-rybbit",
+      "event": "Stop",
+      "command": "bash ~/.claude/hooks/check-rybbit.sh",
+      "description": "Exit gate — Rybbit analytics validation check before session finalization.",
+      "project": "system"
+    },
+    {
+      "name": "lint-on-save",
+      "event": "PreToolUse",
+      "command": "bash ~/.claude/hooks/lint-on-save.sh",
+      "description": "Runs linter on files before they are saved via Edit/Write operations.",
+      "project": "system"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "run_auto_resolve.bat",
+      "path": "betting-analyzer/run_auto_resolve.bat",
+      "description": "Resolves pending picks as W/L against final scores. MUST run daily — without it, the ML model has no new training data and accuracy degrades.",
+      "critical": true,
+      "frequency": "Daily",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "run_batch_resolve.bat",
+      "path": "betting-analyzer/run_batch_resolve.bat",
+      "description": "Bulk resolve — catches up multiple days of unresolved picks if auto-resolve was missed. Run after any downtime.",
+      "critical": false,
+      "frequency": "As needed",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "run_shadow_learning.bat",
+      "path": "betting-analyzer/run_shadow_learning.bat",
+      "description": "Triggers shadow learning cycle — updates ML model weights based on latest resolved outcomes. Should run after every resolve pass.",
+      "critical": false,
+      "frequency": "After resolve",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "start.bat",
+      "path": "betting-analyzer/start.bat",
+      "description": "Launches Flask server on localhost:5000 + Cloudflare tunnel. Cannot be started from Claude Code — must run from Explorer or terminal.",
+      "critical": true,
+      "frequency": "On boot",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "backup_before_deploy.bat",
+      "path": "betting-analyzer/backup_before_deploy.bat",
+      "description": "Full snapshot of SQLite database + config files before any deployment. Creates timestamped backup directory.",
+      "critical": true,
+      "frequency": "Before deploy",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "start_openclaw.bat",
+      "path": ".openclaw/start_openclaw.bat",
+      "description": "Starts OpenClaw gateway via PM2 as 'clawdbot' process. Connects to Discord + Telegram channels.",
+      "critical": false,
+      "frequency": "On boot",
+      "project": "openclaw"
+    },
+    {
+      "name": "restart_openclaw.bat",
+      "path": ".openclaw/restart_openclaw.bat",
+      "description": "Restarts clawdbot PM2 process. After restart, manually kill the old node.exe PID (the one WITHOUT --max-old-space-size=3072).",
+      "critical": false,
+      "frequency": "As needed",
+      "project": "openclaw"
+    },
+    {
+      "name": "gateway.cmd",
+      "path": ".openclaw/gateway.cmd",
+      "description": "OpenClaw gateway startup script — launches the bot gateway on port 18789 in loopback mode.",
+      "critical": false,
+      "frequency": "On boot",
+      "project": "openclaw"
+    },
+    {
+      "name": "auto_pick_filter.py",
+      "path": ".openclaw/workspace/auto_pick_filter.py",
+      "description": "ML pick selection — evaluates sport win rates, edge strength, EV ranking. Filters AI suggestions to 4-7 picks/sport, max 9 total, $4/bet.",
+      "critical": true,
+      "frequency": "Daily (via cron)",
+      "project": "openclaw"
+    },
+    {
+      "name": "auto_tweet_picks.py",
+      "path": ".openclaw/workspace/auto_tweet_picks.py",
+      "description": "Generates Nimrod-style bet slip images for Discord. 3 per sport max, 9 total max. WHY THIS PICK + KEY STATS + ALL EDGES format.",
+      "critical": false,
+      "frequency": "Daily (via cron)",
+      "project": "openclaw"
+    },
+    {
+      "name": "pick_analysis.py",
+      "path": ".openclaw/workspace/pick_analysis.py",
+      "description": "Analyzes last 500 resolved picks. Extracts edge patterns, directional tendencies, team performance. Builds BETTING_LEARNINGS.md.",
+      "critical": true,
+      "frequency": "Daily (via cron)",
+      "project": "openclaw"
+    },
+    {
+      "name": "morning_briefing.py",
+      "path": ".openclaw/workspace/morning_briefing.py",
+      "description": "Generates daily pre-work summary: today's picks, yesterday's results, Flask watchdog status, injury updates.",
+      "critical": false,
+      "frequency": "Daily 7 AM",
+      "project": "openclaw"
+    },
+    {
+      "name": "evening_summary.py",
+      "path": ".openclaw/workspace/evening_summary.py",
+      "description": "End-of-day results recap: W/L breakdown, profit/loss, running record, alerts. Delivered to Discord at 11 PM.",
+      "critical": false,
+      "frequency": "Daily 11 PM",
+      "project": "openclaw"
+    },
+    {
+      "name": "competitor_monitor.py",
+      "path": ".openclaw/workspace/competitor_monitor.py",
+      "description": "Weekly GitHub intelligence scan — tracks Bortlesboat's repos, commits, MCP registry, new tools. Reports to Discord.",
+      "critical": false,
+      "frequency": "Weekly Monday",
+      "project": "openclaw"
+    },
+    {
+      "name": "moltbook_daily_picks.py",
+      "path": ".openclaw/workspace/moltbook_daily_picks.py",
+      "description": "Posts AI picks to Moltbook subreddits (m/edges, m/sportsbetting, m/predictions) via HenchmenAI API account.",
+      "critical": false,
+      "frequency": "Daily (via cron)",
+      "project": "openclaw"
+    },
+    {
+      "name": "moltbook_results_recap.py",
+      "path": ".openclaw/workspace/moltbook_results_recap.py",
+      "description": "Posts resolved picks results with W/L record and P/L to Moltbook subreddits.",
+      "critical": false,
+      "frequency": "Daily 3:30 AM",
+      "project": "openclaw"
+    },
+    {
+      "name": "watchdog.py",
+      "path": "betting-analyzer/watchdog.py",
+      "description": "Master supervisor — manages Flask + 4 daemons with auto-restart, exponential backoff, and 30s health checks. Alerts on repeated failures.",
+      "critical": true,
+      "frequency": "On boot",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "discord_listener.py",
+      "path": "betting-analyzer/src/discord_listener.py",
+      "description": "Admin command polling daemon — listens for approve/deny/trigger nimrod/force resolve commands in Discord every 30s.",
+      "critical": false,
+      "frequency": "On boot",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "auto_resolve_daemon.py",
+      "path": "betting-analyzer/src/auto_resolve_daemon.py",
+      "description": "Standalone auto-resolve daemon — continuously resolves pending picks against final scores without manual bat file execution.",
+      "critical": true,
+      "frequency": "On boot",
+      "project": "betting-analyzer"
+    },
+    {
+      "name": "run_monitor.bat",
+      "path": "process-monitor/run_monitor.bat",
+      "description": "Launches WMI event monitor — detects sensitive process creation/termination events on the local machine.",
+      "critical": false,
+      "frequency": "On demand",
+      "project": "process-monitor"
+    },
+    {
+      "name": "MUTUALFUNDStart.bat",
+      "path": "repos/Investment-Command-Center/MUTUALFUNDStart.bat",
+      "description": "Launches Investment Command Center — starts FastAPI backend (port 8000) + Next.js frontend (port 3000) with 3s delay between.",
+      "critical": false,
+      "frequency": "On demand",
+      "project": "investment-command-center"
+    },
+    {
+      "name": "Desktop Shortcut",
+      "path": "Desktop/Betting Analyzer.lnk",
+      "description": "Quick launch shortcut on Desktop — opens betting-analyzer in browser.",
+      "critical": false,
+      "frequency": "On demand",
+      "project": "system"
+    }
+  ]
+}

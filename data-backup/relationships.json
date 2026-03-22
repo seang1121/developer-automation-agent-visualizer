@@ -1,0 +1,98 @@
+[
+  {
+    "from": "claude",
+    "to": "openclaw",
+    "label": "7 agents \u00b7 15 crons \u00b7 3 channels",
+    "type": "data"
+  },
+  {
+    "from": "claude",
+    "to": "betting-analyzer",
+    "label": "14 agents \u00b7 11 sched \u00b7 MCP",
+    "type": "data"
+  },
+  {
+    "from": "claude",
+    "to": "investment-command-center",
+    "label": "12 agents \u00b7 GitHub Actions",
+    "type": "data"
+  },
+  {
+    "from": "claude",
+    "to": "agent-dashboard",
+    "label": "Monitors all systems",
+    "type": "data"
+  },
+  {
+    "from": "claude",
+    "to": "cli",
+    "label": "107 slash commands",
+    "type": "extends"
+  },
+  {
+    "from": "claude",
+    "to": "fishing-analyzer",
+    "label": "8 APIs \u00b7 daily report",
+    "type": "data"
+  },
+  {
+    "from": "openclaw",
+    "to": "discord-telegram",
+    "label": "Delivers",
+    "type": "publish"
+  },
+  {
+    "from": "openclaw",
+    "to": "moltbook",
+    "label": "HenchmenAI",
+    "type": "publish"
+  },
+  {
+    "from": "openclaw",
+    "to": "fishing-analyzer",
+    "label": "Daily report",
+    "type": "trigger"
+  },
+  {
+    "from": "betting-analyzer",
+    "to": "sports-betting-mcp",
+    "label": "MCP API",
+    "type": "publish"
+  },
+  {
+    "from": "betting-analyzer",
+    "to": "openclaw",
+    "label": "AI picks",
+    "type": "data"
+  },
+  {
+    "from": "betting-analyzer",
+    "to": "march-madness",
+    "label": "NCAAB data",
+    "type": "data"
+  },
+  {
+    "from": "sportsipy",
+    "to": "betting-analyzer",
+    "label": "Stats feed",
+    "type": "data"
+  },
+  {
+    "from": "sports-betting-mcp",
+    "to": "claude",
+    "label": "MCP tools",
+    "type": "data"
+  },
+  {
+    "from": "fidelity-fund-analyzer",
+    "to": "investment-command-center",
+    "label": "Fund data",
+    "type": "data"
+  },
+  {
+    "from": "march-madness",
+    "to": "ncaab-sweet16-analysis",
+    "label": "Tournament data",
+    "type": "data"
+  }
+]

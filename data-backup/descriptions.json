@@ -1,0 +1,21 @@
+{
+  "betting-analysis": "Four agents run in parallel on every game. Each produces an independent signal score that feeds into the consensus pipeline. Combined weight: 70% of the final pick decision.",
+  "betting-pipeline": "Sequential processing stage. ML model consumes all parallel agent outputs as features, Consensus aggregates with \u00b115% caps, Narrative generates the human-readable explanation.",
+  "betting-monitoring": "Always-on daemons that keep data fresh between analysis runs. Injury changes trigger re-analysis. Line snapshots build the historical data that LineMovementAgent needs.",
+  "betting-orchestration": "Single coordinator that manages the full pipeline lifecycle \u2014 context loading, parallel dispatch, sequential chaining, and database persistence.",
+  "betting-output": "Final stage \u2014 converts AI picks into distributable content (bet slip images, tweet drafts) for social media and the Nimrod scheduler.",
+  "betting-resolution": "Two-pass resolve system ensures all games get settled. Evening pass catches most results, late-night pass handles West Coast and overtime games. Feeds results back into ML training.",
+  "betting-refresh": "Data ingestion layer \u2014 keeps the pipeline fed with fresh odds, games, rankings, and news throughout the day.",
+  "betting-content": "Content generation triggered on a schedule \u2014 bet slip images and tweet drafts prepared for distribution.",
+  "betting-maintenance": "Infrastructure health \u2014 database backups and agent process monitoring.",
+  "openclaw-henchmen": "Full multi-platform betting pipeline. Picks delivery \u2192 bet slip images \u2192 Moltbook publishing \u2192 results recap. 10 of 15 cron jobs handle the complete betting lifecycle across Discord, Telegram, and Moltbook. ML-filtered pick selection, browser automation for logging, and 500-pick analysis feedback loop.",
+  "openclaw-briefings": "Daily Discord digests \u2014 morning preview of today's action with Flask health check, evening recap of results with P/L and anomaly alerts.",
+  "openclaw-intelligence": "Weekly competitive intelligence. Monitors Bortlesboat's GitHub activity, MCP registry, and new tool releases every Monday morning.",
+  "openclaw-fishing": "Jacksonville ICW fishing intelligence delivered to Discord at 5 AM daily. Pulls live NOAA conditions, solunar feeding windows, tide predictions, and NWS forecast. Scores 9 spots and 10 species against real-time data.",
+  "openclaw-moltbook": "HenchmenAI social presence on Moltbook. Daily picks to 3 subreddits (m/edges, m/sportsbetting, m/predictions), results recaps, and notification monitoring 4x/day. Full autonomous community engagement.",
+  "icc-scanners": "Five parallel stock/fund scanners running on yfinance data. Dividend stalwarts (44 stocks + 6 ETFs), emerging tech (40+ stocks), hidden gems (15 small/mid-caps), mutual funds (12 top funds), HYSA alternatives (10 money market ETFs). Each uses composite multi-factor scoring.",
+  "icc-models": "Quantitative finance engines. Monte Carlo (10k stochastic paths with percentile projections), Markowitz efficient frontier optimizer (max Sharpe + min volatility), Gordon Growth Model for dividend valuation, and comprehensive risk metrics (Sharpe, Sortino, VaR, CVaR, drawdown).",
+  "icc-advisor": "Proactive recommendation pipeline. Financial health scorer (5-factor composite) determines strategy \u2192 parallel scanners run \u2192 owned tickers filtered out \u2192 top 8 picks ranked with contextual reasoning. 30-min cache TTL.",
+  "icc-monitoring": "Portfolio health monitoring \u2014 concentration risk detection (>25-40% single holding), diversification gaps, sector allocation review, and rebalancing recommendations. Scored 0-100 with severity levels.",
+  "betting-discord": "Discord integration layer for betting-analyzer. Admin command listener polls every 30s for approve/deny/trigger nimrod commands. Picks poster sends rich embeds with bet slip images and confidence scores. Rate-limited alerts channel for injury changes and line movements."
+}

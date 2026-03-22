@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Betting-AI-Analyzer",
+    "path": "repos/Betting-AI-Analyzer",
+    "description": "Archived copy of the betting analyzer \u2014 original repo snapshot before major refactor.",
+    "techStack": ["Python", "Flask", "SQLite"],
+    "originalUrl": "https://github.com/seang1121/Betting-AI-Analyzer"
+  },
+  {
+    "name": "CD-Ladder-Analyzer",
+    "path": "repos/CD-Ladder-Analyzer",
+    "description": "Certificate of deposit ladder optimization tool \u2014 calculates optimal CD maturity staggering for maximizing yield.",
+    "techStack": ["Python"],
+    "originalUrl": "https://github.com/seang1121/CD-Ladder-Analyzer"
+  },
+  {
+    "name": "Fishing-Report-Analyzer",
+    "path": "repos/Fishing-Report-Analyzer",
+    "description": "Archived copy of the fishing report analyzer \u2014 earlier version before OpenClaw integration.",
+    "techStack": ["Python"],
+    "originalUrl": "https://github.com/seang1121/Fishing-Report-Analyzer"
+  },
+  {
+    "name": "Investment-Command-Center",
+    "path": "repos/Investment-Command-Center",
+    "description": "Investment portfolio dashboard \u2014 multi-asset tracking with automated alert system.",
+    "techStack": ["Python", "Flask"],
+    "originalUrl": "https://github.com/seang1121/investment-command-center"
+  },
+  {
+    "name": "Loan-Officer-Exam-Prep-Study-Guide",
+    "path": "repos/Loan-Officer-Exam-Prep-Study-Guide",
+    "description": "NMLS exam preparation tool \u2014 study guide generator with practice questions and topic tracking.",
+    "techStack": ["Python"],
+    "originalUrl": "https://github.com/seang1121/Loan-Officer-Exam-Prep-Study-Guide"
+  },
+  {
+    "name": "Mortgage-Interest-Rate-Lookup",
+    "path": "repos/Mortgage-Interest-Rate-Lookup",
+    "description": "Mortgage rate comparison tool \u2014 aggregates rates from multiple lenders for side-by-side analysis.",
+    "techStack": ["Python"],
+    "originalUrl": "https://github.com/seang1121/Mortgage-Interest-Rate-Lookup"
+  },
+  {
+    "name": "betting-ai-landing",
+    "path": "repos/betting-ai-landing",
+    "description": "Archived landing page for Betting AI Analyzer \u2014 earlier version of the marketing site.",
+    "techStack": ["HTML", "CSS", "JavaScript"],
+    "originalUrl": "https://github.com/seang1121/betting-ai-landing"
+  },
+  {
+    "name": "ncaab-MarchMadness-Trend-analysis",
+    "path": "repos/ncaab-MarchMadness-Trend-analysis",
+    "description": "NCAAB March Madness trend analysis \u2014 historical tournament data mining and pattern recognition.",
+    "techStack": ["Python"],
+    "originalUrl": "https://github.com/seang1121/ncaab-MarchMadness-Trend-analysis"
+  }
+]

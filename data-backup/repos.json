@@ -1,0 +1,173 @@
+[
+  {
+    "name": "agent-dashboard",
+    "url": "https://github.com/seang1121/agent-dashboard",
+    "visibility": "private",
+    "description": "Agent Command Center — React/TypeScript dashboard monitoring all agents, schedulers, cron jobs, and Claude ecosystem plugins.",
+    "agentCount": 0,
+    "automationCount": 1,
+    "project": "infrastructure"
+  },
+  {
+    "name": "awesome-mcp-servers",
+    "url": "https://github.com/seang1121/awesome-mcp-servers",
+    "visibility": "public",
+    "description": "Curated list of MCP servers and tools across the ecosystem.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "tools"
+  },
+  {
+    "name": "betting-ai-landing",
+    "url": "https://github.com/seang1121/betting-ai-landing",
+    "visibility": "public",
+    "description": "Landing page for the Betting AI Analyzer — marketing site and documentation.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "infrastructure"
+  },
+  {
+    "name": "betting-analyzer",
+    "url": "https://github.com/seang1121/Betting-AI-Analyzer",
+    "visibility": "private",
+    "description": "Core betting analyzer — Flask/SQLite, 14 agents, 11 schedulers. Runs at sportsbettingaianalyzer.com via Cloudflare tunnel.",
+    "agentCount": 14,
+    "automationCount": 11,
+    "project": "betting-analyzer"
+  },
+  {
+    "name": "cli",
+    "url": "https://github.com/seang1121/cli",
+    "visibility": "public",
+    "description": "107 custom skills for Claude Code CLI — slash commands for common workflows.",
+    "agentCount": 0,
+    "automationCount": 107,
+    "project": "tools"
+  },
+  {
+    "name": "Fidelity-Analyzer-Clean",
+    "url": "",
+    "visibility": "private",
+    "description": "Clean-room Fidelity fund analyzer — local-only, no remote.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "analysis"
+  },
+  {
+    "name": "fidelity-fund-analyzer",
+    "url": "https://github.com/seang1121/Fidelity-Fund-Analyzer",
+    "visibility": "public",
+    "description": "Fidelity mutual fund analysis — performance comparison, expense ratio optimization, portfolio allocation. Feeds data into ICC.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "investment-command-center"
+  },
+  {
+    "name": "Fishing-Report-Analyzer",
+    "url": "https://github.com/seang1121/Fishing-Report-Analyzer",
+    "visibility": "public",
+    "description": "Jacksonville ICW fishing intelligence — 8 parallel APIs (NOAA tides/wind/temp/pressure, solunar, sunrise-sunset, NWS), 9 spot rankings, 10 species scoring, full bait/rig system, 100-pt Go/No-Go.",
+    "agentCount": 0,
+    "automationCount": 1,
+    "project": "openclaw"
+  },
+  {
+    "name": "fishing-analyzer",
+    "url": "https://github.com/seang1121/Fishing-Report-Analyzer",
+    "visibility": "public",
+    "description": "Local fishing analysis tool — companion to Fishing-Report-Analyzer with enhanced local data processing.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "tools"
+  },
+  {
+    "name": "fixer-github",
+    "url": "",
+    "visibility": "private",
+    "description": "GitHub repository fixer tool — automated cleanup and maintenance for GitHub repos. Local-only.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "tools"
+  },
+  {
+    "name": "gws-cli-explore",
+    "url": "https://github.com/googleworkspace/cli",
+    "visibility": "public",
+    "description": "GWS CLI exploration tool — forked from Google Workspace CLI.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "tools"
+  },
+  {
+    "name": "march-madness",
+    "url": "https://github.com/seang1121/ncaab-MarchMadness-Trend-analysis",
+    "visibility": "public",
+    "description": "March Madness bracket analysis — historical trend modeling and upset prediction for NCAA tournament.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "analysis"
+  },
+  {
+    "name": "mortgage-rate-tracker",
+    "url": "https://github.com/seang1121/Mortgage-Interest-Rate-Lookup",
+    "visibility": "public",
+    "description": "Mortgage interest rate tracking and comparison tool — monitors rate changes over time.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "analysis"
+  },
+  {
+    "name": "ncaab-sweet16-analysis",
+    "url": "https://github.com/seang1121/ncaab-MarchMadness-Trend-analysis",
+    "visibility": "public",
+    "description": "NCAAB Sweet 16 deep-dive analysis — advanced matchup modeling for tournament rounds.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "analysis"
+  },
+  {
+    "name": "nvda-explore",
+    "url": "https://github.com/seang1121/nvda",
+    "visibility": "public",
+    "description": "NVIDIA stock analysis — technical indicators, earnings impact modeling, and price action research.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "analysis"
+  },
+  {
+    "name": "seang1121",
+    "url": "https://github.com/seang1121/seang1121",
+    "visibility": "public",
+    "description": "GitHub profile README — personal developer profile and portfolio showcase.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "infrastructure"
+  },
+  {
+    "name": "sports-betting-mcp",
+    "url": "https://github.com/seang1121/sports-betting-mcp",
+    "visibility": "public",
+    "description": "MCP server exposing betting-analyzer's AI predictions, live odds, and analysis tools to Claude and other MCP clients.",
+    "agentCount": 0,
+    "automationCount": 1,
+    "project": "betting-analyzer"
+  },
+  {
+    "name": "sports-betting-mcp-repo",
+    "url": "https://github.com/seang1121/sports-betting-mcp",
+    "visibility": "public",
+    "description": "Sports betting MCP server repository — published package version of the MCP integration.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "betting-analyzer"
+  },
+  {
+    "name": "sportsipy",
+    "url": "https://github.com/seang1121/sportsipy",
+    "visibility": "public",
+    "description": "Sports data scraping library — Python package for pulling stats from multiple sports reference sites.",
+    "agentCount": 0,
+    "automationCount": 0,
+    "project": "analysis"
+  }
+]
